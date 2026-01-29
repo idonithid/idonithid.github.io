@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ido Nitzan Hidekel — Deep Learning Researcher</title>
-  <meta name="description" content="Deep learning researcher focused on spectral bias and frequency-aware learning for generative artifact detection." />
+  <title>Ido Nitzan Hidekel — Spectral Bias & Optimization</title>
+  <meta name="description" content="Research on spectral bias and optimization dynamics with applications to detecting AI-generated data (audio, images), HF aware optimization, and Frequency diffusion." />
   <meta name="theme-color" content="#0b0f19" />
 
   <style>
     :root{
       --bg:#0b0f19;
-      --panel:#11182a;
       --text:#e8eefc;
       --muted:#aab7d6;
       --accent:#79a6ff;
@@ -18,7 +17,7 @@
       --border:rgba(255,255,255,.08);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 18px;
-      --max: 1040px;
+      --max: 980px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -26,19 +25,19 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(1000px 600px at 20% 0%, rgba(121,166,255,.22), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(87,230,194,.18), transparent 55%),
+        radial-gradient(950px 580px at 15% 0%, rgba(121,166,255,.22), transparent 60%),
+        radial-gradient(850px 560px at 90% 10%, rgba(87,230,194,.16), transparent 55%),
         var(--bg);
       color:var(--text);
-      line-height:1.5;
+      line-height:1.55;
     }
     a{color:var(--text); text-decoration:none}
     a:hover{color:var(--accent)}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 16px 60px}
 
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 16px; border:1px solid var(--border); border-radius:999px;
+      padding:12px 14px; border:1px solid var(--border); border-radius:999px;
       background:rgba(17,24,42,.65); backdrop-filter: blur(10px);
       position:sticky; top:14px; z-index:50;
     }
@@ -48,20 +47,14 @@
       display:grid; place-items:center;
       background: linear-gradient(135deg, rgba(121,166,255,.35), rgba(87,230,194,.25));
       border:1px solid var(--border);
+      font-weight:800;
     }
-    .nav .name{font-weight:700; letter-spacing:.2px}
+    .nav .name{font-weight:750; letter-spacing:.2px}
+    .nav .role{font-size:13px; color:var(--muted)}
     .nav .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
     .nav .links a{font-size:14px; color:var(--muted)}
     .nav .links a:hover{color:var(--text)}
-
-    .hero{
-      margin-top:22px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:18px;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
+    @media (max-width: 880px){
       .nav{gap:10px}
       .nav .links{display:none}
     }
@@ -73,21 +66,27 @@
       box-shadow: var(--shadow);
       padding:20px;
     }
+
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:16px;
+    }
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+    }
     .headline{
-      font-size:40px; line-height:1.08; margin:0 0 10px;
+      font-size:40px;
+      line-height:1.08;
+      margin:0 0 10px;
       letter-spacing:-.8px;
     }
     .sub{
-      margin:0 0 14px; color:var(--muted); font-size:16px;
-      max-width: 60ch;
-    }
-
-    .pillrow{display:flex; gap:10px; flex-wrap:wrap}
-    .pill{
-      font-size:13px; color:var(--muted);
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      padding:8px 10px; border-radius:999px;
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:16px;
+      max-width: 72ch;
     }
 
     .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
@@ -97,7 +96,7 @@
       padding:10px 12px; border-radius:12px;
       background:rgba(255,255,255,.03);
       color:var(--text);
-      font-weight:600;
+      font-weight:650;
       transition: transform .12s ease, background .12s ease;
     }
     .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.06)}
@@ -106,30 +105,27 @@
       border-color: rgba(121,166,255,.35);
     }
 
+    .sep{height:1px; background:var(--border); margin:14px 0}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
-      gap:18px;
-      margin-top:18px;
+      gap:16px;
+      margin-top:16px;
     }
     .span-7{grid-column: span 7}
     .span-5{grid-column: span 5}
-    .span-6{grid-column: span 6}
     .span-12{grid-column: span 12}
-    @media (max-width: 900px){
-      .span-7,.span-5,.span-6{grid-column: span 12}
+    @media (max-width: 880px){
+      .span-7,.span-5{grid-column: span 12}
     }
 
     h2{margin:0 0 10px; font-size:18px}
     h3{margin:0 0 6px; font-size:15px}
+    ul.list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
 
-    .muted{color:var(--muted)}
-    .small{font-size:13px}
-    .sep{height:1px; background:var(--border); margin:14px 0}
-
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-
-    .kvs{display:grid; gap:12px; margin-top:10px}
     .kv{
       border:1px solid var(--border);
       background:rgba(255,255,255,.03);
@@ -175,43 +171,46 @@
         <div class="badge" aria-hidden="true">∿</div>
         <div>
           <div class="name">Ido Nitzan Hidekel</div>
-          <div class="muted small">Deep Learning Researcher · Tel Aviv University</div>
+          <div class="role">Spectral Bias · Optimization Dynamics · AI-Generated Data Detection</div>
         </div>
       </div>
       <div class="links">
         <a href="#about">About</a>
+        <a href="#research">Research</a>
         <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
 
     <section class="hero" id="top">
       <div class="card">
-        <h1 class="headline">Spectral bias · Optimization · Deepfake detection</h1>
+        <h1 class="headline">Spectral bias and optimization for robust detection of AI-generated data.</h1>
         <p class="sub">
-          I build frequency-aware learning methods and detection systems for generated audio and images.
+          I study how neural networks preferentially learn low frequencies (spectral bias / F-principle),
+          how optimization dynamics shape this behavior, and how to leverage frequency-aware mechanisms to
+          improve detection of AI-generated artifacts in <b>audio</b> and <b>images</b>.
         </p>
 
-        <div class="pillrow" aria-label="focus areas">
-          <div class="pill">Spectral bias</div>
-          <div class="pill">Frequency-aware learning</div>
-          <div class="pill">Generative forensics</div>
-          <div class="pill">Audio + vision</div>
-          <div class="pill">GCP training</div>
+        <div class="tagrow" aria-label="research tags">
+          <span class="tag">Spectral bias / F-principle</span>
+          <span class="tag">Optimization dynamics</span>
+          <span class="tag">Frequency-aware learning</span>
+          <span class="tag">Generative forensics</span>
+          <span class="tag">Audio + Vision</span>
         </div>
 
+        
         <div class="cta">
-          <!-- Put your PDF in the repo root as resume.pdf -->
-          <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+          <a class="btn" href="https://github.com/idonithid/idonithid.github.io/raw/main/Deep%20learning%20resume%20(6).pdf" target="_blank" rel="noreferrer">
+  Resume (PDF)
+</a>
 
           <a class="btn primary" href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">
             Google Scholar
           </a>
-          <a class="btn" href="https://github.com/idonithid" target="_blank" rel="noreferrer">
-            GitHub
+          <a class="btn" href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noreferrer">
+            Paper (arXiv PDF)
           </a>
           <a class="btn" href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noreferrer">
             LinkedIn
@@ -221,49 +220,47 @@
 
         <div class="sep"></div>
         <div class="muted small">
-          M.Sc. Electrical Engineering @ Tel Aviv University · B.Sc. Applied Mathematics · Israel
+          Tel Aviv University · M.Sc. Electrical Engineering · B.Sc. Applied Mathematics
         </div>
       </div>
 
       <div class="card">
-        <h2>Quick facts</h2>
-        <div class="kvs">
-          <div class="kv">
-            <div class="top">
-              <div>
-                <div><b>Research</b></div>
-                <div class="meta">Geometric Deep Learning Lab · 2024–present</div>
-              </div>
-              <div class="meta">TAU</div>
-            </div>
-            <div class="muted small" style="margin-top:8px;">
-              Frequency-guided learning for robust generalization and artifact sensitivity.
+        <h2>Snapshot</h2>
+
+        <div class="kv">
+          <div class="top">
+            <div>
+              <h3>Core question</h3>
+              <div class="meta">What fails, why, and how to fix it</div>
             </div>
           </div>
+          <div class="muted small" style="margin-top:8px;">
+            When models under-represent high-frequency structure, generated content can look “correct” at a semantic level
+            while carrying detectable spectral inconsistencies. I design methods that surface these inconsistencies reliably.
+          </div>
+        </div>
 
-          <div class="kv">
-            <div class="top">
-              <div>
-                <div><b>Applied R&amp;D</b></div>
-                <div class="meta">Dtect Vision · 2025–present</div>
-              </div>
-              <div class="meta">GCP</div>
-            </div>
-            <div class="muted small" style="margin-top:8px;">
-              Scalable training/eval pipelines and detector deployment.
+        <div class="kv" style="margin-top:12px;">
+          <div class="top">
+            <div>
+              <h3>Applied target</h3>
+              <div class="meta">AI-generated data detection</div>
             </div>
           </div>
+          <div class="muted small" style="margin-top:8px;">
+            Detection of generated artifacts in images and audio with emphasis on cross-generator generalization.
+          </div>
+        </div>
 
-          <div class="kv">
-            <div class="top">
-              <div>
-                <div><b>Contact</b></div>
-                <div class="meta">Email · Phone</div>
-              </div>
+        <div class="kv" style="margin-top:12px;">
+          <div class="top">
+            <div>
+              <h3>Contact</h3>
+              <div class="meta">Email · Phone</div>
             </div>
-            <div class="muted small" style="margin-top:8px;">
-              <a href="mailto:Idonithid@gmail.com">Idonithid@gmail.com</a> · <a href="tel:+972543278990">+972-54-327-8990</a>
-            </div>
+          </div>
+          <div class="muted small" style="margin-top:8px;">
+            <a href="mailto:Idonithid@gmail.com">Idonithid@gmail.com</a> · <a href="tel:+972543278990">+972-54-327-8990</a>
           </div>
         </div>
       </div>
@@ -273,30 +270,30 @@
       <div class="card span-7">
         <h2>About</h2>
         <p class="muted">
-          I study how neural networks prioritize low vs. high frequencies during learning, and how to exploit this
-          for detection of subtle generative artifacts. I combine theory (spectral/optimization bias) with
-          large-scale training and evaluation on real-world data.
+          I am a deep learning researcher at Tel Aviv University working on theoretical and empirical foundations of
+          spectral bias and optimization dynamics, with applications to detection of AI-generated content.
+          My background is in applied mathematics and electrical engineering (signal processing).
         </p>
         <ul class="list">
           <li>B.Sc. Applied Mathematics, Tel Aviv University (2020–2024).</li>
           <li>M.Sc. Electrical Engineering, Tel Aviv University (2024–present).</li>
-          <li>Signal processing background (random signals/noise, DSP, control).</li>
         </ul>
       </div>
 
-      <div class="card span-5">
-        <h2>Research focus</h2>
-        <div class="tagrow">
-          <span class="tag">Spectral bias</span>
-          <span class="tag">Frequency-guided losses</span>
-          <span class="tag">Representation learning</span>
-          <span class="tag">Generalization</span>
-          <span class="tag">Forensics</span>
+      <div class="card span-5" id="research">
+        <h2>Research</h2>
+        <div class="muted">
+          My work centers around the interaction between <b>representation</b> and <b>optimization</b> in the frequency domain:
         </div>
+        <ul class="list">
+          <li><b>Spectral bias:</b> characterizing frequency-dependent learning rates and inductive bias.</li>
+          <li><b>Optimization dynamics:</b> how training trajectories amplify/attenuate spectral components.</li>
+          <li><b>Frequency-aware mechanisms:</b> architectures/losses/regularizers that increase sensitivity to high-frequency artifacts.</li>
+          <li><b>Applications:</b> detection of AI-generated data in audio and images, emphasizing generalization to unseen generators.</li>
+        </ul>
         <div class="sep"></div>
         <div class="muted small">
-          Full list: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
-          (<code class="inline">CQ8pQSUAAAAJ</code>).
+          Full list: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>.
         </div>
       </div>
     </section>
@@ -308,18 +305,13 @@
         <div class="kv" style="margin-top:10px;">
           <div class="top">
             <div>
-              <h3>arXiv:2511.21325 (2025)</h3>
-              <div class="meta">Preprint</div>
+              <h3>arXiv:2511.21325</h3>
+              <div class="meta">2025 · Preprint</div>
             </div>
           </div>
 
           <div class="muted small" style="margin-top:8px;">
-            <b>Ido Nitzan Hidekel</b>.
-            <a href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noreferrer">PDF</a>
-          </div>
-
-          <div class="muted small" style="margin-top:8px;">
-            If you want the paper title + co-authors shown here, paste them and I’ll format it cleanly.
+            Ido Nitzan Hidekel. <a href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noreferrer">PDF</a>
           </div>
         </div>
       </div>
@@ -337,9 +329,8 @@
             </div>
           </div>
           <ul class="list">
-            <li>Frequency-guided learning framework for generative artifact detection.</li>
-            <li>Architectures/losses coupling low-frequency semantics with high-frequency residual cues.</li>
-            <li>Benchmarked generalization on real-world deepfake detection data.</li>
+            <li>Research on spectral bias and frequency-aware learning mechanisms.</li>
+            <li>Designed detection methods for AI-generated audio and images emphasizing cross-domain generalization.</li>
           </ul>
         </div>
 
@@ -351,101 +342,9 @@
             </div>
           </div>
           <ul class="list">
-            <li>Built detection systems for generated audio/images with scalable training/evaluation.</li>
-            <li>Implemented production-grade pipelines on GCP (experiments, reproducibility, monitoring).</li>
+            <li>Built and deployed deep learning pipelines for detecting generated artifacts in real-world data.</li>
+            <li>Large-scale training/evaluation workflows on GCP.</li>
           </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid" id="projects">
-      <div class="card span-12">
-        <h2>Selected projects</h2>
-        <p class="muted small">Public GitHub repositories.</p>
-
-        <div class="grid" style="margin-top:10px;">
-          <div class="kv span-6">
-            <div class="top">
-              <div>
-                <h3>workshop-in-Scientific-Computing</h3>
-                <div class="meta">Python</div>
-              </div>
-            </div>
-            <div class="muted small" style="margin-top:8px;">
-              Scientific computing exercises and experiments.
-            </div>
-            <div class="cta" style="margin-top:10px;">
-              <a class="btn" href="https://github.com/idonithid/workshop-in-Scientific-Computing" target="_blank" rel="noreferrer">Repo</a>
-            </div>
-          </div>
-
-          <div class="kv span-6">
-            <div class="top">
-              <div>
-                <h3>buy_signal_dedection_with_ML_models</h3>
-                <div class="meta">Jupyter Notebook</div>
-              </div>
-            </div>
-            <div class="muted small" style="margin-top:8px;">
-              ML experiments for signal-based decision modeling.
-            </div>
-            <div class="cta" style="margin-top:10px;">
-              <a class="btn" href="https://github.com/idonithid/buy_signal_dedection_with_ML_models" target="_blank" rel="noreferrer">Repo</a>
-            </div>
-          </div>
-
-          <div class="kv span-6">
-            <div class="top">
-              <div>
-                <h3>finer_2</h3>
-                <div class="meta">Jupyter Notebook</div>
-              </div>
-            </div>
-            <div class="muted small" style="margin-top:8px;">
-              Notebook experiments.
-            </div>
-            <div class="cta" style="margin-top:10px;">
-              <a class="btn" href="https://github.com/idonithid/finer_2" target="_blank" rel="noreferrer">Repo</a>
-            </div>
-          </div>
-
-          <div class="kv span-6">
-            <div class="top">
-              <div>
-                <h3>Pin a flagship repo</h3>
-                <div class="meta">Add your main project here</div>
-              </div>
-            </div>
-            <div class="muted small" style="margin-top:8px;">
-              Create a public overview repo (even if core code stays private) and link it here.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="grid" id="skills">
-      <div class="card span-12">
-        <h2>Skills</h2>
-        <div class="grid" style="margin-top:6px;">
-          <div class="kv span-6">
-            <h3>Deep Learning</h3>
-            <div class="muted">
-              PyTorch · Lightning · DDP · representation learning · detector training/eval
-            </div>
-          </div>
-          <div class="kv span-6">
-            <h3>Engineering</h3>
-            <div class="muted">
-              Python · Docker · GCP · experiment management · reproducibility
-            </div>
-          </div>
-          <div class="kv span-12">
-            <h3>Signal processing</h3>
-            <div class="muted">
-              Frequency-domain analysis for audio/vision; artifact-centric feature design.
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -456,19 +355,15 @@
         <div class="muted">
           Email: <a href="mailto:Idonithid@gmail.com">Idonithid@gmail.com</a><br/>
           Phone: <a href="tel:+972543278990">+972-54-327-8990</a><br/>
-          Scholar: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a><br/>
-          GitHub: <a href="https://github.com/idonithid" target="_blank" rel="noreferrer">@idonithid</a><br/>
-          LinkedIn: <a href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
-        <div class="sep"></div>
-        <div class="muted small">
-          Put your CV file in the repo root as <code class="inline">resume.pdf</code>.
+          Google Scholar: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">CQ8pQSUAAAAJ</a><br/>
+          LinkedIn: <a href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noreferrer">ido-nitzan-hidekel</a><br/>
+          Paper: <a href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noreferrer">arXiv:2511.21325</a>
         </div>
       </div>
     </section>
 
     <div class="footer">
-      © <span id="y"></span> Ido Nitzan Hidekel · GitHub Pages
+      © <span id="y"></span> Ido Nitzan Hidekel
     </div>
   </div>
 
