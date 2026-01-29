@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ido Nitzan Hidekel — Deep Learning Researcher</title>
-  <meta name="description" content="Deep learning researcher focused on spectral bias, optimization dynamics, and frequency-aware learning for generative artifact detection." />
+  <meta name="description" content="Deep learning researcher focused on spectral bias and frequency-aware learning for generative artifact detection." />
   <meta name="theme-color" content="#0b0f19" />
 
   <style>
@@ -35,6 +35,7 @@
     a{color:var(--text); text-decoration:none}
     a:hover{color:var(--accent)}
     .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 60px}
+
     .nav{
       display:flex; align-items:center; justify-content:space-between;
       padding:14px 16px; border:1px solid var(--border); border-radius:999px;
@@ -52,18 +53,19 @@
     .nav .links{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
     .nav .links a{font-size:14px; color:var(--muted)}
     .nav .links a:hover{color:var(--text)}
+
     .hero{
       margin-top:22px;
       display:grid;
       grid-template-columns: 1.25fr .75fr;
       gap:18px;
-      <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
     }
     @media (max-width: 900px){
       .hero{grid-template-columns:1fr}
       .nav{gap:10px}
       .nav .links{display:none}
     }
+
     .card{
       background:rgba(17,24,42,.72);
       border:1px solid var(--border);
@@ -72,13 +74,14 @@
       padding:20px;
     }
     .headline{
-      font-size:44px; line-height:1.08; margin:0 0 10px;
+      font-size:40px; line-height:1.08; margin:0 0 10px;
       letter-spacing:-.8px;
     }
     .sub{
-      margin:0 0 18px; color:var(--muted); font-size:16px;
-      max-width: 62ch;
+      margin:0 0 14px; color:var(--muted); font-size:16px;
+      max-width: 60ch;
     }
+
     .pillrow{display:flex; gap:10px; flex-wrap:wrap}
     .pill{
       font-size:13px; color:var(--muted);
@@ -86,7 +89,8 @@
       background:rgba(255,255,255,.03);
       padding:8px 10px; border-radius:999px;
     }
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
       display:inline-flex; align-items:center; gap:10px;
       border:1px solid var(--border);
@@ -101,6 +105,7 @@
       background: linear-gradient(135deg, rgba(121,166,255,.22), rgba(87,230,194,.14));
       border-color: rgba(121,166,255,.35);
     }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -114,10 +119,16 @@
     @media (max-width: 900px){
       .span-7,.span-5,.span-6{grid-column: span 12}
     }
+
     h2{margin:0 0 10px; font-size:18px}
     h3{margin:0 0 6px; font-size:15px}
+
     .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .sep{height:1px; background:var(--border); margin:14px 0}
+
     .list{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+
     .kvs{display:grid; gap:12px; margin-top:10px}
     .kv{
       border:1px solid var(--border);
@@ -127,6 +138,7 @@
     }
     .kv .top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
     .kv .meta{font-size:13px; color:var(--muted)}
+
     .tagrow{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
     .tag{
       font-size:12px;
@@ -136,14 +148,7 @@
       padding:6px 8px;
       border-radius:999px;
     }
-    .footer{
-      margin-top:22px;
-      text-align:center;
-      color:rgba(170,183,214,.75);
-      font-size:13px;
-    }
-    .sep{height:1px; background:var(--border); margin:14px 0}
-    .small{font-size:13px}
+
     code.inline{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 12px;
@@ -152,6 +157,13 @@
       border: 1px solid var(--border);
       padding: 2px 6px;
       border-radius: 8px;
+    }
+
+    .footer{
+      margin-top:22px;
+      text-align:center;
+      color:rgba(170,183,214,.75);
+      font-size:13px;
     }
   </style>
 </head>
@@ -163,12 +175,12 @@
         <div class="badge" aria-hidden="true">∿</div>
         <div>
           <div class="name">Ido Nitzan Hidekel</div>
-          <div class="muted small">Deep Learning Researcher · TAU</div>
+          <div class="muted small">Deep Learning Researcher · Tel Aviv University</div>
         </div>
       </div>
       <div class="links">
         <a href="#about">About</a>
-        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
@@ -178,22 +190,23 @@
 
     <section class="hero" id="top">
       <div class="card">
-        <h1 class="headline">Frequency-aware learning for robust generative artifact detection.</h1>
+        <h1 class="headline">Spectral bias · Optimization · Deepfake detection</h1>
         <p class="sub">
-          Deep learning researcher with an applied mathematics + electrical engineering background,
-          focusing on <b>spectral bias</b>, <b>optimization dynamics</b>, and <b>frequency-guided architectures</b>
-          for detecting subtle artifacts in generated audio and images.
+          I build frequency-aware learning methods and detection systems for generated audio and images.
         </p>
 
         <div class="pillrow" aria-label="focus areas">
           <div class="pill">Spectral bias</div>
-          <div class="pill">Representation learning</div>
-          <div class="pill">Generative artifacts</div>
-          <div class="pill">Signal processing (audio/vision)</div>
-          <div class="pill">GCP-scale training</div>
+          <div class="pill">Frequency-aware learning</div>
+          <div class="pill">Generative forensics</div>
+          <div class="pill">Audio + vision</div>
+          <div class="pill">GCP training</div>
         </div>
 
         <div class="cta">
+          <!-- Put your PDF in the repo root as resume.pdf -->
+          <a class="btn" href="resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
+
           <a class="btn primary" href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">
             Google Scholar
           </a>
@@ -208,7 +221,7 @@
 
         <div class="sep"></div>
         <div class="muted small">
-          Currently: M.Sc. Electrical Engineering @ Tel Aviv University (GPA 95.5) · planning direct PhD track.
+          M.Sc. Electrical Engineering @ Tel Aviv University · B.Sc. Applied Mathematics · Israel
         </div>
       </div>
 
@@ -224,7 +237,7 @@
               <div class="meta">TAU</div>
             </div>
             <div class="muted small" style="margin-top:8px;">
-              Frequency-guided learning framework for analyzing generative model outputs and improving sensitivity to high-frequency artifacts.
+              Frequency-guided learning for robust generalization and artifact sensitivity.
             </div>
           </div>
 
@@ -237,7 +250,7 @@
               <div class="meta">GCP</div>
             </div>
             <div class="muted small" style="margin-top:8px;">
-              Production-grade detection systems and scalable pipelines for large-scale experimentation.
+              Scalable training/eval pipelines and detector deployment.
             </div>
           </div>
 
@@ -245,11 +258,11 @@
             <div class="top">
               <div>
                 <div><b>Contact</b></div>
-                <div class="meta">Email · Israel</div>
+                <div class="meta">Email · Phone</div>
               </div>
             </div>
             <div class="muted small" style="margin-top:8px;">
-              <a href="mailto:Idonithid@gmail.com">Idonithid@gmail.com</a> · +972-54-327-8990
+              <a href="mailto:Idonithid@gmail.com">Idonithid@gmail.com</a> · <a href="tel:+972543278990">+972-54-327-8990</a>
             </div>
           </div>
         </div>
@@ -260,54 +273,57 @@
       <div class="card span-7">
         <h2>About</h2>
         <p class="muted">
-          I work on understanding and exploiting <b>frequency-domain failure modes</b> of modern neural networks—especially
-          in settings where high-frequency artifacts matter (deepfakes, generative forensics).
-          My work combines theoretical ideas (spectral bias, inductive bias, optimization dynamics) with
-          deployable systems and rigorous evaluation.
+          I study how neural networks prioritize low vs. high frequencies during learning, and how to exploit this
+          for detection of subtle generative artifacts. I combine theory (spectral/optimization bias) with
+          large-scale training and evaluation on real-world data.
         </p>
         <ul class="list">
           <li>B.Sc. Applied Mathematics, Tel Aviv University (2020–2024).</li>
           <li>M.Sc. Electrical Engineering, Tel Aviv University (2024–present).</li>
-          <li>Complementary EE coursework: random signals/noise, signal processing, intro control.</li>
+          <li>Signal processing background (random signals/noise, DSP, control).</li>
         </ul>
       </div>
 
-      <div class="card span-5" id="research">
+      <div class="card span-5">
         <h2>Research focus</h2>
         <div class="tagrow">
           <span class="tag">Spectral bias</span>
           <span class="tag">Frequency-guided losses</span>
-          <span class="tag">Encoder fusion (CLIP/DINO-style)</span>
-          <span class="tag">Generalization to unseen generators</span>
-          <span class="tag">Audio + vision forensics</span>
+          <span class="tag">Representation learning</span>
+          <span class="tag">Generalization</span>
+          <span class="tag">Forensics</span>
         </div>
         <div class="sep"></div>
         <div class="muted small">
-          Publication list is maintained on Scholar: <code class="inline">CQ8pQSUAAAAJ</code>.
+          Full list: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>
+          (<code class="inline">CQ8pQSUAAAAJ</code>).
         </div>
       </div>
     </section>
-<section class="grid" id="publications">
-  <div class="card span-12">
-    <h2>Publications</h2>
 
-    <div class="kv" style="margin-top:10px;">
-      <div class="top">
-        <div>
-          <h3>Frequency-Domain Inductive Bias and Generalization in Deep Networks</h3>
-          <div class="meta">arXiv preprint, 2025</div>
+    <section class="grid" id="publications">
+      <div class="card span-12">
+        <h2>Publications</h2>
+
+        <div class="kv" style="margin-top:10px;">
+          <div class="top">
+            <div>
+              <h3>arXiv:2511.21325 (2025)</h3>
+              <div class="meta">Preprint</div>
+            </div>
+          </div>
+
+          <div class="muted small" style="margin-top:8px;">
+            <b>Ido Nitzan Hidekel</b>.
+            <a href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noreferrer">PDF</a>
+          </div>
+
+          <div class="muted small" style="margin-top:8px;">
+            If you want the paper title + co-authors shown here, paste them and I’ll format it cleanly.
+          </div>
         </div>
       </div>
-
-      <div class="muted small" style="margin-top:6px;">
-        Ido Nitzan Hidekel.
-        <a href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noreferrer">
-          arXiv:2511.21325
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section class="grid" id="experience">
       <div class="card span-12">
@@ -321,9 +337,9 @@
             </div>
           </div>
           <ul class="list">
-            <li>Designed a frequency-guided learning framework for analyzing outputs of modern generative models.</li>
-            <li>Proposed architectures/losses coupling low-frequency semantics with high-frequency residual components.</li>
-            <li>Reported strong generalization on real-world deepfake detection benchmarks; paper under submission to ICML.</li>
+            <li>Frequency-guided learning framework for generative artifact detection.</li>
+            <li>Architectures/losses coupling low-frequency semantics with high-frequency residual cues.</li>
+            <li>Benchmarked generalization on real-world deepfake detection data.</li>
           </ul>
         </div>
 
@@ -335,9 +351,8 @@
             </div>
           </div>
           <ul class="list">
-            <li>Built production-grade deep learning systems for detecting artifacts in generated audio and images.</li>
-            <li>Translated spectral/frequency insights into deployable models and evaluation pipelines.</li>
-            <li>Developed scalable training workflows on GCP for rapid ablations and reproducibility.</li>
+            <li>Built detection systems for generated audio/images with scalable training/evaluation.</li>
+            <li>Implemented production-grade pipelines on GCP (experiments, reproducibility, monitoring).</li>
           </ul>
         </div>
       </div>
@@ -346,7 +361,7 @@
     <section class="grid" id="projects">
       <div class="card span-12">
         <h2>Selected projects</h2>
-        <p class="muted small">From your public GitHub profile.</p>
+        <p class="muted small">Public GitHub repositories.</p>
 
         <div class="grid" style="margin-top:10px;">
           <div class="kv span-6">
@@ -357,7 +372,7 @@
               </div>
             </div>
             <div class="muted small" style="margin-top:8px;">
-              Coursework / workshop materials and experiments.
+              Scientific computing exercises and experiments.
             </div>
             <div class="cta" style="margin-top:10px;">
               <a class="btn" href="https://github.com/idonithid/workshop-in-Scientific-Computing" target="_blank" rel="noreferrer">Repo</a>
@@ -387,7 +402,7 @@
               </div>
             </div>
             <div class="muted small" style="margin-top:8px;">
-              Notebook-based experiments (add a one-line description when you want).
+              Notebook experiments.
             </div>
             <div class="cta" style="margin-top:10px;">
               <a class="btn" href="https://github.com/idonithid/finer_2" target="_blank" rel="noreferrer">Repo</a>
@@ -397,13 +412,12 @@
           <div class="kv span-6">
             <div class="top">
               <div>
-                <h3>Add your flagship repo</h3>
-                <div class="meta">Pin your main project here</div>
+                <h3>Pin a flagship repo</h3>
+                <div class="meta">Add your main project here</div>
               </div>
             </div>
             <div class="muted small" style="margin-top:8px;">
-              Once your deepfake-detection / spectral-bias repo is public (or you create a public “overview” repo),
-              link it here.
+              Create a public overview repo (even if core code stays private) and link it here.
             </div>
           </div>
         </div>
@@ -417,20 +431,19 @@
           <div class="kv span-6">
             <h3>Deep Learning</h3>
             <div class="muted">
-              PyTorch, Lightning, Torch DDP · CNNs · large encoders · representation learning · generative models ·
-              loss/regularization/inductive bias
+              PyTorch · Lightning · DDP · representation learning · detector training/eval
             </div>
           </div>
           <div class="kv span-6">
             <h3>Engineering</h3>
             <div class="muted">
-              Python · NumPy/Pandas · Docker · GCP · large-scale training · experiment design &amp; ablations · reproducibility
+              Python · Docker · GCP · experiment management · reproducibility
             </div>
           </div>
           <div class="kv span-12">
             <h3>Signal processing</h3>
             <div class="muted">
-              Frequency-domain analysis for audio &amp; vision; high-frequency artifact detection and failure-mode analysis.
+              Frequency-domain analysis for audio/vision; artifact-centric feature design.
             </div>
           </div>
         </div>
@@ -443,19 +456,19 @@
         <div class="muted">
           Email: <a href="mailto:Idonithid@gmail.com">Idonithid@gmail.com</a><br/>
           Phone: <a href="tel:+972543278990">+972-54-327-8990</a><br/>
-          Scholar: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">Google Scholar profile</a><br/>
+          Scholar: <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noreferrer">Google Scholar</a><br/>
           GitHub: <a href="https://github.com/idonithid" target="_blank" rel="noreferrer">@idonithid</a><br/>
-          LinkedIn: <a href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noreferrer">ido-nitzan-hidekel</a>
+          LinkedIn: <a href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
         <div class="sep"></div>
         <div class="muted small">
-          Tip: add a <code class="inline">resume.pdf</code> file to this repo and link it here for one-click download.
+          Put your CV file in the repo root as <code class="inline">resume.pdf</code>.
         </div>
       </div>
     </section>
 
     <div class="footer">
-      © <span id="y"></span> Ido Nitzan Hidekel · Built with plain HTML/CSS · Hosted on GitHub Pages
+      © <span id="y"></span> Ido Nitzan Hidekel · GitHub Pages
     </div>
   </div>
 
