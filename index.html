@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ido Nitzan Hidekel</title>
-  <meta name="description" content="Ph.D. direct-track student at Tel Aviv University and Lead, Deep Learning at Dtect Vision. Research on foundations of deep learning &mdash; spectral bias, optimization dynamics, generalization &mdash; with applications to detection of AI-generated media." />
+    <meta name="description" content="Ph.D. direct-track student at Tel Aviv University and Lead, Deep Learning at Dtect Vision. Research on foundations of deep learning &mdash; spectral bias, optimization dynamics, generalization &mdash; with applications to continual learning and synthetic-media detection." />
   <meta name="author" content="Ido Nitzan Hidekel" />
   <meta name="theme-color" content="#ffffff" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23b31b1b'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='white'%3EIH%3C/text%3E%3C/svg%3E" />
@@ -288,22 +288,28 @@
           <b>Lead, Deep Learning</b> at <b>Dtect Vision</b>.
         </p>
 
+                <p>
+          I study the <em>foundations of deep learning</em> &mdash; spectral bias, optimization
+          dynamics, and generalization. My central question is <b>how neural networks learn at
+          different frequencies</b>, and what that means for real-world learning problems.
+          I treat learned representations as signals, characterize how training dynamics absorb
+          and amplify spectral content, and use that lens to design principled methods.
+        </p>
+
         <p>
-          I work on the <em>foundations of deep learning</em> &mdash; spectral bias, optimization
-          dynamics, and generalization &mdash; and how those foundations inform the design of practical
-          systems that detect AI-generated media. My approach sits at the intersection of <b>signal
-          processing</b> and <b>deep learning</b>: I treat learned representations as signals, ask
-          which frequencies a network can and cannot see, and turn those answers into architectures,
-          loss functions, and training procedures that expose artifacts modern generators leave behind.
+          The frequency-domain view connects problems that look unrelated. Two of the applications
+          I focus on are <em>detection of AI-generated audio</em>, where the high-frequency residuals
+          networks struggle to learn become a discriminative signal, and <em>continual learning and
+          catastrophic forgetting</em>, where spectral analysis of representation drift exposes what
+          is lost during training and what can be preserved.
         </p>
 
         <p>
           At <a href="https://dtectvision.ai" target="_blank" rel="noreferrer">Dtect Vision</a>
-          I lead the deep learning group: we translate theoretical insights about frequency-domain
-          behavior of neural networks into production-grade detectors for generated images and audio,
-          with an emphasis on <em>cross-generator generalization</em> and robustness under deployment shift.
-          Academically, I am advised in the Geometric Deep Learning Lab, working on spectral-bias-aware
-          optimization and frequency-guided representations.
+          I lead the deep learning group, translating these insights into production-grade
+          detection systems. Academically, I am advised in the Geometric Deep Learning Lab,
+          working on spectral-bias-aware optimization, frequency-guided representations, and the
+          broader theory of how networks learn.
         </p>
 
         <p class="muted" style="margin-bottom:10px">
@@ -313,13 +319,13 @@
         </p>
 
         <div class="pills" aria-label="research interests">
+                    <span class="pill">Foundations of deep learning</span>
           <span class="pill">Spectral bias</span>
           <span class="pill">Optimization dynamics</span>
           <span class="pill">Generalization</span>
-          <span class="pill">Frequency-aware learning</span>
-          <span class="pill">Signal processing &times; DL</span>
-          <span class="pill">Deepfake / synthetic-media detection</span>
-          <span class="pill">Representation learning</span>
+          <span class="pill">Frequency-domain learning</span>
+          <span class="pill">Continual learning &amp; forgetting</span>
+          <span class="pill">Synthetic-media detection</span>
         </div>
       </div>
     </section>
@@ -490,24 +496,24 @@
     <section id="research">
       <div class="section-title"><span>Research Agenda</span><span class="sub">in brief</span></div>
       <div class="twocol">
-        <div>
+                <div>
           <div class="entry">
-            <h3>Spectral bias &amp; optimization</h3>
-            <p>When and why networks under-represent high-frequency structure during training, and how optimizer choice, parameterization, and loss geometry shape that behavior across training.</p>
+            <h3>Frequency-domain view of learning</h3>
+            <p>How neural networks differentially absorb low- vs. high-frequency structure across training, and why the spectrum a model can represent is the spectrum it tends to learn.</p>
           </div>
           <div class="entry">
-            <h3>Generalization in detectors</h3>
-            <p>Why synthetic-media detectors transfer poorly across generators, and what inductive biases (frequency residuals, contrastive structure, architectural constraints) restore cross-domain generalization.</p>
+            <h3>Optimization dynamics &amp; generalization</h3>
+            <p>How optimizer choice, parameterization, and loss geometry shape spectral trajectories during training, and how those trajectories predict downstream generalization.</p>
           </div>
         </div>
         <div>
           <div class="entry">
-            <h3>Signal processing meets deep learning</h3>
-            <p>Using classical signal-processing tools &mdash; subband decompositions, SRM-style high-pass filters, Fourier / wavelet analysis &mdash; as first-class components inside modern networks.</p>
+            <h3>Continual learning &amp; forgetting</h3>
+            <p>Spectral signatures of catastrophic forgetting: which frequency bands of a learned representation drift first, and what spectrally-aware interventions preserve plasticity without sacrificing stability.</p>
           </div>
           <div class="entry">
-            <h3>Audio &amp; image forensics in the wild</h3>
-            <p>Moving detection results from clean benchmarks to deployed conditions: codecs, compression, domain shift, adversarial pressure, and the evaluation protocols needed to see those failures.</p>
+            <h3>Synthetic-media detection</h3>
+            <p>Frequency-residual methods for detection of AI-generated audio and image content, with an emphasis on cross-generator generalization and robustness under deployment shift.</p>
           </div>
         </div>
       </div>
