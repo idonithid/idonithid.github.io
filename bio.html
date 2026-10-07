@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ido Nitzan Hidekel | Biography</title>
+  <meta name="description" content="Short biography of Ido Nitzan Hidekel." />
+  <meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#151311" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23b31b1b'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='white'%3EIH%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#faf9f5; --text:#1c1a18; --muted:#5a544c; --line:#d9d3c7; --accent:#b31b1b;
+      --sans:"Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      --serif:"Roboto Slab", Georgia, "Times New Roman", serif;
+      color-scheme:light dark;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#151311; --text:#ece7df; --muted:#b8b0a4; --line:#3a3530; --accent:#ff6b6b; }
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:var(--bg); color:var(--text); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+    .wrap{max-width:760px; margin:0 auto; padding:48px 24px 64px}
+    .back{display:inline-flex; align-items:center; gap:6px; font:500 15px var(--serif)}
+    .back svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+    h1{margin:28px 0 20px; padding-bottom:16px; border-bottom:1px solid var(--line); font:700 30px/1.2 var(--serif)}
+    p{margin:0 0 16px; font-size:18px}
+    @media (max-width:680px){ h1{font-size:26px} p{font-size:17px} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <a class="back" href="./">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Back to home
+    </a>
+    <h1>Ido Nitzan Hidekel: Biography</h1>
+    <p>
+      Ido Nitzan Hidekel is a Ph.D. student (direct track) in Electrical Engineering at Tel Aviv University, advised
+      by <a href="https://en-engineering.tau.ac.il/profile/darav" target="_blank" rel="noopener">Dan Raviv</a> in the
+      Geometric Deep Learning Lab. Ido's research focuses on the foundations of deep learning
+      (spectral bias, optimization dynamics, and generalization) and centers on how neural networks learn at
+      different frequencies. Treating learned representations as signals, this work characterizes how training
+      dynamics absorb and amplify spectral content, and uses that lens to design principled methods for problems
+      such as detecting AI-generated audio and understanding catastrophic forgetting in continual learning.
+    </p>
+    <p>
+      In parallel, Ido is an AI Research Scientist Intern in the Multimodal AI group at IBM Research, led by Eli
+      Schwartz, and the Lead of Deep Learning at <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a>,
+      heading the group that translates these insights into production-grade detectors for AI-generated audio and
+      images. Before moving to the direct Ph.D. track, Ido received a B.Sc. in Applied Mathematics and completed
+      M.Sc. thesis work in Electrical Engineering (signal processing track), both at Tel Aviv University. Recent
+      work includes SONAR, a spectral-contrastive approach to generalizable audio deepfake detection, accepted to
+      ICML 2026.
+    </p>
+  </main>
+</body>
+</html>
