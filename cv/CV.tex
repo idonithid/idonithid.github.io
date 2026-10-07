@@ -1,0 +1,123 @@
+% CV of Ido Nitzan Hidekel. Build: tectonic cv/CV.tex, then copy cv/CV.pdf to the site root.
+\documentclass[10pt]{article}
+\usepackage[a4paper,left=1.37cm,right=1.37cm,top=1.15cm,bottom=1.1cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{tgheros}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\definecolor{primary}{RGB}{14,77,100}
+\definecolor{accent}{RGB}{46,134,168}
+\definecolor{muted}{RGB}{85,85,95}
+\definecolor{ink}{RGB}{27,27,31}
+
+\hypersetup{
+  colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Ido Nitzan Hidekel — CV}, pdfauthor={Ido Nitzan Hidekel}
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\linespread{1.18}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=1.5em
+\AtBeginDocument{\color{ink}}
+
+\titleformat{\section}{\color{primary}\normalsize\bfseries}{}{0pt}{}[\vspace{-0.6em}{\color{primary}\rule{\linewidth}{0.6pt}}]
+\titlespacing*{\section}{0pt}{0.75em}{0.35em}
+
+\setlist[itemize]{label={\color{accent}\scriptsize\textbullet}, leftmargin=1.15em, itemsep=1pt, topsep=4pt, parsep=0pt, partopsep=0pt}
+
+\newcommand{\sep}{\enspace{\color{muted}|}\enspace}
+% Role or degree: title, organization, right-aligned details.
+\newcommand{\entry}[3]{\textbf{#1}{\color{muted}\ --- #2}\hfill{\color{muted}\small #3}\par}
+\newcommand{\sub}[1]{{\color{muted}\small\itshape #1}\par}
+% Publication: title, authors, venue, links, description.
+\newcommand{\pub}[5]{%
+  \textbf{#1}\par\vspace{2pt}
+  {\color{muted}\small #2}\par\vspace{1pt}
+  {\small{\color{accent}\itshape #3}\quad #4}\par\vspace{2pt}
+  {\footnotesize #5}\par}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{25}{30}\selectfont\bfseries\color{primary} Ido Nitzan Hidekel}\\[3pt]
+  {\small\color{muted} Ph.D. Student, Tel Aviv University \enspace\textbullet\enspace AI Research Scientist Intern, IBM Research}\\[4pt]
+  {\small
+    \href{mailto:idonithid@gmail.com}{\faEnvelope\ E-mail}\qquad
+    \href{https://idonithid.github.io}{\faGlobe\ Website}\qquad
+    \href{https://github.com/idonithid}{\faGithub\ GitHub}\qquad
+    \href{https://scholar.google.com/citations?user=CQ8pQSUAAAAJ}{\faGraduationCap\ Scholar}\qquad
+    \href{https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160}{\faLinkedin\ LinkedIn}}
+\end{center}
+\vspace{-11pt}{\color{primary}\rule{\linewidth}{0.6pt}}\par\vspace{2pt}
+
+Ph.D. student in Electrical Engineering at Tel Aviv University and \textbf{AI Research Scientist Intern} in the
+Multimodal AI group at \textbf{IBM Research}. Research on the emergence of \textbf{structural low rank and spectral bias}
+in deep learning and how they shape \textbf{generalization, forgetting, and optimization}, with applications to
+classification, language and vision models, INRs and graphics, forgetting and model merging, and post-training.
+Experienced in taking AI systems from \textbf{research through data engineering, model development, evaluation, and
+deployment}. First author of papers accepted to \textbf{ICML 2026} and the \textbf{ICML 2026 CATS Workshop}.
+
+\section{Experience}
+\entry{AI Research Scientist Intern}{IBM Research}{Oct 2026--present}
+\sub{Multimodal AI group, led by Eli Schwartz.}
+\vspace{6pt}
+
+\entry{Graduate Researcher}{Geometric Deep Learning Lab, Tel Aviv University}{2024--present}
+\sub{Advisor: Prof.\ Dan Raviv}
+\begin{itemize}
+  \item Research how structural low rank and spectral bias emerge in deep networks and shape generalization,
+        forgetting, and optimization.
+  \item Develop theoretical predictors and reproducible empirical pipelines across vision, language, and audio models.
+\end{itemize}
+\vspace{2pt}
+
+\entry{Lead, Deep Learning}{Dtect Vision}{Tel Aviv\sep 2025--2026}
+\sub{Led end-to-end algorithm development for large-scale synthetic-media detection (audio, video, and images).}
+\begin{itemize}
+  \item Developed and evaluated deep-learning systems using vision foundation models, including architecture design,
+        fine-tuning, calibration, and out-of-distribution evaluation.
+  \item Built a \textbf{5M+ sample data pipeline} with leakage audits, source-aware sampling, and stratified evaluation.
+  \item Implemented distributed experimentation using \textbf{PyTorch DDP, GCP, Vertex AI, Docker, and W\&B}.
+\end{itemize}
+
+\section{Selected Publications}
+\pub{SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection}
+    {Ido Nitzan Hidekel, Gal Lifshitz, Khen Cohen, Dan Raviv}
+    {ICML 2026, regular track.}
+    {\href{https://arxiv.org/abs/2511.21325}{\faFilePdf\ Paper}\sep
+     \href{https://github.com/idonithid/SONAR-Audio-DF-Detection}{\faGithub\ Code}\sep
+     \href{https://idonithid.github.io/SONAR-Audio-DF-Detection/}{\faExternalLink*\ Project}}
+    {Developed an XLSR-based dual-path detector combining content and learnable residual representations. Achieved
+     1.45\% EER on ASVspoof 2021 DF and 5.43\% EER on In-the-Wild, with robustness to codec and bandwidth shifts.}
+\vspace{6pt}
+
+\pub{Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation}
+    {Ido Nitzan Hidekel, Dan Raviv}
+    {ICML 2026 CATS Workshop --- Continual Adaptation at Scale: Towards Sustainable AI.}
+    {\href{https://arxiv.org/abs/2606.18024}{\faFilePdf\ Paper}}
+    {Developed a function-space predictor for catastrophic forgetting and showed that forgetting concentrates in a small
+     number of dominant functional modes, motivating targeted regularization methods.}
+
+\section{Education}
+\entry{Ph.D., Electrical Engineering \mdseries(direct track)}{Tel Aviv University}{2026--present}
+\vspace{1pt}
+\entry{M.Sc., Electrical Engineering}{Tel Aviv University\sep\textbf{GPA 95.5}}{2024--2026}
+\vspace{1pt}
+\entry{B.Sc., Applied Mathematics}{Tel Aviv University\sep\textbf{GPA 84}}{2020--2024}
+
+\section{Technical Skills}
+\textbf{Programming \& ML.} Python, PyTorch, Lightning, Claude Code, LangChain\par\vspace{2pt}
+\textbf{Methods.} Deep learning, foundation-model fine-tuning, representation learning, transfer learning, OOD
+detection, calibration, statistical evaluation.\par\vspace{2pt}
+\textbf{Infrastructure.} GCP, Vertex AI, PyTorch DDP, Docker, W\&B, Linux, Git, distributed experimentation and
+large-scale data processing.
+
+\end{document}
