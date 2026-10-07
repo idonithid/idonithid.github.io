@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://idonithid.github.io/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Ido Nitzan Hidekel" />
-  <meta property="og:description" content="Ph.D. student at Tel Aviv University working on the foundations of deep learning: spectral bias, optimization dynamics, and generalization." />
+  <meta property="og:description" content="Ph.D. student at Tel Aviv University studying structural low rank and spectral bias in deep learning, and how they shape generalization, forgetting, and optimization." />
   <meta property="og:url" content="https://idonithid.github.io/" />
   <meta property="og:image" content="https://idonithid.github.io/assets/avatar.jpg" />
   <meta name="theme-color" content="#faf9f5" media="(prefers-color-scheme: light)" />
@@ -163,7 +163,6 @@
     }
     .btn svg.i{width:14px; height:14px}
     .btn:hover, .btn[aria-expanded="true"]{background:var(--chip-strong); text-decoration:none}
-    .btn.soon{background:transparent; border-style:dashed; color:var(--subtle); cursor:default}
     .panel{margin-top:12px; font-size:15px; line-height:1.6}
     .panel p{margin:0}
     .panel pre{
@@ -263,9 +262,10 @@
           I am a Ph.D. student (direct track) in Electrical Engineering at Tel Aviv University, advised by
           <a href="https://en-engineering.tau.ac.il/profile/darav" target="_blank" rel="noopener">Dan Raviv</a>
           in the Geometric Deep Learning Lab.
-          My research focuses on the foundations of deep learning: spectral bias, optimization dynamics, and generalization.
-          Treating learned representations as signals, I aim to understand how neural networks learn at different
-          frequencies, and to turn that understanding into principled methods for real-world problems.
+          My research studies the emergence of structural low rank and spectral bias in deep learning, and how they
+          shape generalization, forgetting, and optimization. I use these insights to develop principled methods for
+          applications spanning classification, language and vision models, implicit neural representations (INRs)
+          and graphics, forgetting and model merging, and post-training.
         </p>
         <p>
           Alongside my Ph.D., I am an AI Research Scientist Intern in the Multimodal AI group at IBM Research, led by
@@ -274,8 +274,8 @@
           group at <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a>.
         </p>
         <p class="note">
-          I am always happy to discuss research on frequency-domain analysis of neural networks or detection problems
-          grounded in signal processing. Feel free to reach out via <a href="mailto:idonithid@gmail.com">email</a>.
+          I am always happy to discuss research on low-rank structure and spectral bias in deep learning.
+          Feel free to reach out via <a href="mailto:idonithid@gmail.com">email</a>.
         </p>
       </section>
 
@@ -286,11 +286,11 @@
           <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Recent Research</h2>
         </div>
         <p class="prose">
-          Recently, I have been studying learning dynamics through a spectral lens, including how the high-frequency
-          artifacts that generative models leave behind, and that common detectors under-exploit, can expose
-          AI-generated audio [<a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">1</a>], and why
-          catastrophic forgetting concentrates in a low-rank subspace defined by the cross-task neural tangent
-          kernel [<a href="#pub-forgetting">2</a>].
+          Recently, I have been studying how spectral bias and low-rank structure play out in practice, including how
+          the high-frequency artifacts that generative models leave behind, and that common detectors under-exploit,
+          can expose AI-generated audio [<a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">1</a>],
+          and why catastrophic forgetting concentrates in a low-rank subspace defined by the cross-task neural tangent
+          kernel [<a href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">2</a>].
         </p>
       </section>
 
@@ -307,7 +307,7 @@
           </li>
           <li>
             <time datetime="2026-05">May 2026</time>
-            <p><a href="#pub-forgetting">Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</a> was accepted to the ICML 2026 Workshop on Continual Adaptation at Scale (CATS).</p>
+            <p><a href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</a> was accepted to the ICML 2026 Workshop on Continual Adaptation at Scale (CATS).</p>
           </li>
           <li>
             <time datetime="2026-05">May 2026</time>
@@ -431,8 +431,8 @@
               <p class="authors"><span class="me">Ido Nitzan Hidekel</span>, Dan Raviv</p>
               <p class="venue"><i>ICML Workshop on Continual Adaptation at Scale: Towards Sustainable AI (CATS)</i>, 2026</p>
               <div class="btns">
-                <span class="btn soon">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Paper coming soon</span>
+                <a class="btn" href="https://arxiv.org/pdf/2606.18024" target="_blank" rel="noopener">
+                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>PDF</a>
                 <button class="btn" type="button" data-toggle aria-expanded="false" aria-controls="tldr-forgetting">
                   <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>TL;DR</button>
                 <button class="btn" type="button" data-toggle aria-expanded="false" aria-controls="bib-forgetting">
