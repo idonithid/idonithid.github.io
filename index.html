@@ -20,6 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Roboto+Slab:wght@500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
+
   <style>
     :root{
       --bg:#faf9f5;
@@ -30,15 +31,10 @@
       --border:#e5e0d7;
       --line:#d9d3c7;
       --chip:#f2efe8;
-      --chip-strong:#e8e3d9;
       --accent:#b31b1b;
-      --accent-tint:rgba(179,27,27,.38);
-      --nav-bg:rgba(255,255,255,.9);
-      --shadow:0 1px 4px rgba(28,26,24,.06);
       --sans:"Roboto", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
       --serif:"Roboto Slab", Georgia, "Times New Roman", serif;
       --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      --max:896px;
       color-scheme:light dark;
     }
     @media (prefers-color-scheme: dark){
@@ -51,17 +47,11 @@
         --border:#2e2a25;
         --line:#3a3530;
         --chip:#26221e;
-        --chip-strong:#322d28;
         --accent:#ff6b6b;
-        --accent-tint:rgba(255,107,107,.45);
-        --nav-bg:rgba(29,26,23,.88);
-        --shadow:0 1px 6px rgba(0,0,0,.35);
       }
     }
 
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
     body{
       margin:0; background:var(--bg); color:var(--text);
       font-family:var(--sans); font-size:16px; line-height:1.6;
@@ -72,509 +62,215 @@
     :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
     svg.i{width:1em; height:1em; flex:none; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+    .wrap{max-width:1120px; margin:0 auto; padding:20px 28px 12px}
 
-    /* Header */
-    .header{display:flex; align-items:center; gap:40px; padding:48px 0 40px}
+    /* Top block: about on the left, news on the right */
+    .top{display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:44px; align-items:stretch}
+
+    .header{display:flex; align-items:center; gap:24px; margin-bottom:16px}
     .avatar{
-      width:208px; height:208px; flex:none; border-radius:50%; object-fit:cover; display:block;
+      width:132px; height:132px; flex:none; border-radius:50%; object-fit:cover; display:block;
       box-shadow:0 0 0 1px var(--border), 0 4px 14px rgba(28,26,24,.08);
     }
-    .header h1{font:700 32px/1.15 var(--serif); margin:0 0 10px; letter-spacing:-.01em}
-    .header .role{margin:0; font-size:16.5px; line-height:1.55}
-    .email{display:flex; align-items:center; gap:8px; margin:6px 0 0; font:400 14px/1.5 var(--mono); color:var(--muted)}
-    .email svg.i{width:15px; height:15px}
-    .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+    .header h1{font:700 32px/1.15 var(--serif); margin:0 0 6px; letter-spacing:-.01em}
+    .role{margin:0; font-size:15.5px; line-height:1.5; color:var(--muted)}
+    .links{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px}
     .icon-btn{
       display:inline-flex; align-items:center; justify-content:center;
-      min-width:44px; height:44px; padding:0 12px;
+      min-width:36px; height:36px; padding:0 10px;
       background:var(--surface); color:var(--muted);
-      border:1px solid var(--border); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,.05);
-      font:600 14px/1 var(--sans); transition:background-color .15s, color .15s, border-color .15s;
+      border:1px solid var(--border); border-radius:8px;
+      font:600 13.5px/1 var(--sans); transition:background-color .15s, color .15s, border-color .15s;
     }
-    .icon-btn svg.i{width:20px; height:20px}
-    .icon-btn svg.fill{width:20px; height:20px; fill:currentColor}
+    .icon-btn svg.i, .icon-btn svg.fill{width:18px; height:18px}
+    .icon-btn svg.fill{fill:currentColor}
     .icon-btn:hover{background:var(--accent); border-color:var(--accent); color:#fff; text-decoration:none}
+    .email{margin-left:4px; font:400 13.5px var(--mono); color:var(--muted)}
 
-    /* Section nav: sits on a rule under the header, then sticks to the top */
-    .nav-rule{height:1px; background:var(--line)}
-    .nav{position:sticky; top:12px; z-index:20; display:flex; justify-content:center; margin-top:-24px; pointer-events:none}
-    .nav ul{
-      pointer-events:auto; display:flex; gap:2px; margin:0; padding:4px; list-style:none;
-      background:var(--nav-bg); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
-      border:1px solid var(--border); border-radius:999px; box-shadow:var(--shadow);
-      max-width:100%; overflow-x:auto; scrollbar-width:none;
+    .about p{margin:0 0 10px; font-size:16px; line-height:1.58}
+    .about .note{font-style:italic; color:var(--muted); margin:0}
+
+    h2{margin:0; font:600 22px/1.2 var(--serif)}
+    .section-head{display:flex; align-items:center; gap:14px; margin-bottom:12px}
+    .section-head .rule{flex:1; height:1px; background:var(--line)}
+    .section-head .more{font:500 14px var(--sans); white-space:nowrap}
+
+    /* News: fixed-height scrolling box so the page stays one screen */
+    .news-col{display:flex; flex-direction:column; height:0; min-height:100%}
+    .news-box{
+      position:relative; flex:1; min-height:0; overflow-y:auto;
+      background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:4px 18px;
+      scrollbar-width:thin; scrollbar-color:var(--line) transparent;
     }
-    .nav ul::-webkit-scrollbar{display:none}
-    .nav a{
-      display:block; padding:8px 15px; border-radius:999px; white-space:nowrap;
-      font:500 15px/22px var(--serif); color:var(--muted); transition:background-color .2s, color .2s;
-    }
-    .nav a:hover{background:var(--chip); color:var(--text); text-decoration:none}
-    .nav a[aria-current="true"]{background:var(--chip-strong); color:var(--text); font-weight:600}
-
-    /* Sections */
-    main section{scroll-margin-top:76px}
-    .about{padding-top:40px}
-    .about p, .prose{font-size:18px; line-height:1.6; margin:0 0 14px}
-    .about .note{font-style:italic; margin:0}
-    .divider{display:flex; align-items:center; margin:40px 0; color:var(--subtle)}
-    .divider::before, .divider::after{content:""; flex:1; height:1px; background:var(--line)}
-    .divider span{padding:0 12px; font:8px/1 var(--serif); letter-spacing:2px; user-select:none}
-    .section-head{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 20px; margin-bottom:18px}
-    h2{display:flex; align-items:center; gap:12px; margin:0; font:600 30px/1.2 var(--serif)}
-    h2 svg.i{width:28px; height:28px}
-    .section-note{margin:-6px 0 18px; color:var(--muted); font-size:15.5px}
-    .head-link{display:inline-flex; align-items:center; gap:6px; font:500 15px var(--serif)}
-    .head-link svg.i{width:16px; height:16px}
-
-    /* News */
     .news{list-style:none; margin:0; padding:0}
-    .news li{display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--border)}
-    .news li:first-child{padding-top:2px}
-    .news li[hidden]{display:none}
-    .news time{flex:none; width:96px; color:var(--subtle); font-size:17px}
-    .news p{margin:0; font-size:17px}
-    .more-btn{
-      display:flex; align-items:center; gap:6px; margin:22px auto 0; padding:8px 16px;
-      background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:999px;
-      font:500 14px var(--sans); cursor:pointer; box-shadow:var(--shadow);
-    }
-    .more-btn[hidden]{display:none}
-    .more-btn:hover{background:var(--chip)}
-    .more-btn svg.i{width:16px; height:16px; transition:transform .2s}
-    .more-btn[aria-expanded="true"] svg.i{transform:rotate(180deg)}
+    .news li{padding:12px 0; border-bottom:1px solid var(--border)}
+    .news li:last-child{border-bottom:none}
+    .news time{display:block; color:var(--subtle); font-size:13px; margin-bottom:2px}
+    .news p{margin:0; font-size:15px; line-height:1.55}
 
-    /* Publications */
-    .pubs{display:flex; flex-direction:column; gap:12px}
-    .pub{display:flex; gap:24px; padding:18px 20px; background:var(--surface); border:1px solid var(--border)}
-    .thumb{flex:none; width:184px; height:128px; display:flex; align-items:center; justify-content:center; background:#fff; overflow:hidden}
-    .thumb img, .thumb svg{display:block; width:100%; height:100%; object-fit:contain}
-    .pub-body{min-width:0; flex:1}
-    .pub h3{margin:0; font:500 16.5px/1.5 var(--serif)}
-    .pub .authors, .pub .venue{margin:6px 0 0; color:var(--muted); font-size:15.5px; line-height:1.5}
-    .pub .venue{margin-top:3px}
-    .pub .me{color:var(--text); font-weight:500}
-    .btns{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
-    .btn{
-      display:inline-flex; align-items:center; gap:5px; padding:5px 10px;
-      background:var(--chip); color:var(--text); border:1px solid var(--border); border-radius:8px;
-      font:500 12.5px/1.3 var(--sans); cursor:pointer; transition:background-color .15s;
-    }
-    .btn svg.i{width:14px; height:14px}
-    .btn:hover, .btn[aria-expanded="true"]{background:var(--chip-strong); text-decoration:none}
-    .panel{margin-top:12px; font-size:15px; line-height:1.6}
-    .panel p{margin:0}
-    .panel pre{
-      margin:0; padding:12px 14px; overflow-x:auto;
-      background:var(--bg); border:1px solid var(--border);
-      font:12.5px/1.55 var(--mono); white-space:pre;
-    }
-    .panel .btn{margin-top:8px}
+    /* Publications: compact list, the title is the link */
+    .pubs-section{margin-top:22px}
+    .pubs{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+    .pub{padding:9px 16px; background:var(--surface); border:1px solid var(--border); border-radius:10px}
+    .pub .title{font:500 17px/1.4 var(--serif); color:var(--text)}
+    .pub a.title:hover{color:var(--accent); text-decoration:none}
+    .pub .authors{margin:3px 0 0; color:var(--muted); font-size:14.5px}
+    .pub .me{color:var(--text); font-weight:700}
+    .pub .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:7px; font-size:14px}
+    .venue{padding:2px 9px; border-radius:999px; background:var(--chip); border:1px solid var(--border); color:var(--muted); font-weight:500; font-size:13px}
+    .meta .sep{color:var(--line)}
 
-    /* CV */
-    .subhead{margin:26px 0 12px; font:600 20px/1.3 var(--serif)}
-    .section-head + .subhead{margin-top:6px}
-    .grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    .item{padding:14px 18px; background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--accent-tint)}
-    .item h4{margin:0; font:500 16px/1.45 var(--serif)}
-    .item p{margin:3px 0 0; color:var(--muted); font-size:15px}
-    .nw{white-space:nowrap}
+    .footer{margin-top:12px; color:var(--subtle); font-size:12.5px; text-align:center}
 
-    /* Footer */
-    .footer{
-      display:flex; align-items:center; justify-content:center; gap:16px;
-      margin-top:56px; padding:20px 0 28px; border-top:1px solid var(--border);
-      color:var(--subtle); font-size:13.5px; text-align:center;
+    @media (max-width:860px){
+      .wrap{padding:28px 18px 20px}
+      .top{grid-template-columns:1fr; gap:28px}
+      .news-col{height:auto; min-height:0}
+      .news-box{max-height:340px}
     }
-    .footer p{margin:0}
-    .footer .small{font-size:12px}
-    .to-top{
-      display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px;
-      border-radius:50%; background:var(--surface); color:var(--muted); border:1px solid var(--border); box-shadow:var(--shadow);
-    }
-    .to-top:hover{color:var(--text); background:var(--chip)}
-
-    @media (max-width:680px){
-      .header{flex-direction:column; gap:22px; padding:36px 0 36px; text-align:center}
-      .avatar{width:168px; height:168px}
+    @media (max-width:520px){
+      .header{flex-direction:column; text-align:center; gap:14px}
+      .avatar{width:120px; height:120px}
+      .links{justify-content:center}
+      .email{width:100%; margin:4px 0 0; text-align:center}
       .header h1{font-size:28px}
-      .email, .links{justify-content:center}
-      .links{gap:8px}
-      .icon-btn{min-width:42px; height:42px; padding:0 10px}
-      .nav a{padding:7px 11px; font-size:14px}
-      h2{font-size:24px}
-      h2 svg.i{width:24px; height:24px}
-      .about p, .prose{font-size:17px}
-      .news li{flex-direction:column; gap:2px}
-      .news time{font-size:15px}
-      .news p{font-size:16px}
-      .pub{flex-direction:column; gap:14px; padding:16px}
-      .thumb{width:100%; height:140px}
-      .grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
+    <div class="top">
+      <section class="about-col" aria-label="About">
+        <header class="header">
+          <img class="avatar" src="assets/avatar.jpg" width="440" height="440" alt="Ido Nitzan Hidekel" />
+          <div>
+            <h1>Ido Nitzan Hidekel</h1>
+            <p class="role">Ph.D. Student, Tel Aviv University</p>
+            <p class="role">AI Research Scientist Intern, IBM Research</p>
+            <nav class="links" aria-label="Profiles">
+              <a class="icon-btn" href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
+                <svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+              </a>
+              <a class="icon-btn" href="https://github.com/idonithid" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+                <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </a>
+              <a class="icon-btn" href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+                <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a class="icon-btn" href="mailto:idonithid@gmail.com" title="Email" aria-label="Email">
+                <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+              <a class="icon-btn" href="CV.pdf" target="_blank" rel="noopener" title="Curriculum vitae (PDF)">CV</a>
+              <a class="icon-btn" href="bio.html" title="Short biography">Bio</a>
+            </nav>
+          </div>
+        </header>
 
-    <header class="header" id="about">
-      <img class="avatar" src="assets/avatar.jpg" width="440" height="440" alt="Ido Nitzan Hidekel" />
-      <div>
-        <h1>Ido Nitzan Hidekel</h1>
-        <p class="role">Ph.D. Student &middot; Tel Aviv University</p>
-        <p class="role">AI Research Scientist Intern &middot; IBM Research</p>
-        <p class="email">
-          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          idonithid [at] gmail.com
-        </p>
-        <nav class="links" aria-label="Profiles">
-          <a class="icon-btn" href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar">
-            <svg class="fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-          </a>
-          <a class="icon-btn" href="https://github.com/idonithid" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          </a>
-          <a class="icon-btn" href="https://www.linkedin.com/in/ido-nitzan-hidekel-5b3254160" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a class="icon-btn" href="CV.pdf" target="_blank" rel="noopener" title="Curriculum vitae (PDF)">CV</a>
-          <a class="icon-btn" href="bio.html" title="Short biography">Bio</a>
-        </nav>
+        <div class="about">
+          <p>
+            I am a Ph.D. student (direct track) in Electrical Engineering at Tel Aviv University, advised by
+            <a href="https://en-engineering.tau.ac.il/profile/darav" target="_blank" rel="noopener">Dan Raviv</a>
+            in the Geometric Deep Learning Lab.
+            My research studies the emergence of structural low rank and spectral bias in deep learning, and how they
+            shape generalization, forgetting, and optimization. I use these insights to develop principled methods for
+            applications spanning classification, language and vision models, implicit neural representations (INRs)
+            and graphics, forgetting and model merging, and post-training.
+          </p>
+          <p>
+            Alongside my Ph.D., I am an AI Research Scientist Intern in the Multimodal AI group at IBM Research, led by
+            <a href="https://elischwartz.github.io/" target="_blank" rel="noopener">Eli Schwartz</a>, where I work on
+            post-training for vision-language models (VLMs) and diffusion language models. Previously, I received a
+            B.Sc. in Applied Mathematics and completed my M.Sc. thesis work in Electrical Engineering, both at Tel Aviv
+            University, and led the deep learning group at
+            <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a>.
+          </p>
+          <p class="note">
+            Always happy to discuss low-rank structure and spectral bias in deep learning; feel free to reach out via
+            <a href="mailto:idonithid@gmail.com">email</a>.
+          </p>
+        </div>
+      </section>
+
+      <section class="news-col" id="news" aria-label="News">
+        <div class="section-head">
+          <h2>News</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="news-box" tabindex="0">
+          <ul class="news">
+            <li>
+              <time datetime="2026-10">Oct 2026</time>
+              <p>Joined IBM Research as an AI Research Scientist Intern in the Multimodal AI group, led by <a href="https://elischwartz.github.io/" target="_blank" rel="noopener">Eli Schwartz</a>.</p>
+            </li>
+            <li>
+              <time datetime="2026-05">May 2026</time>
+              <p><a href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</a> was accepted to the ICML 2026 Workshop on Continual Adaptation at Scale (CATS).</p>
+            </li>
+            <li>
+              <time datetime="2026-05">May 2026</time>
+              <p><a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection</a> was accepted to <a href="https://icml.cc/Conferences/2026" target="_blank" rel="noopener">ICML 2026</a>! Code, figures, and findings are on the <a href="https://idonithid.github.io/SONAR-Audio-DF-Detection/" target="_blank" rel="noopener">project page</a>.</p>
+            </li>
+            <li>
+              <time datetime="2026-04">Apr 2026</time>
+              <p>Transitioned to the Ph.D. direct track at Tel Aviv University, continuing in the Geometric Deep Learning Lab.</p>
+            </li>
+            <li>
+              <time datetime="2026">2026</time>
+              <p>Appointed Lead, Deep Learning at <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a>, heading research and productization of detectors for AI-generated audio and images.</p>
+            </li>
+            <li>
+              <time datetime="2025-11">Nov 2025</time>
+              <p>New <a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">preprint</a> introduces SONAR, which detects AI-generated audio by isolating the high-frequency residuals that common detectors under-exploit.</p>
+            </li>
+            <li>
+              <time datetime="2025">2025</time>
+              <p>Joined <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a> to work on production deepfake detection, translating frequency-domain theory into deployable detectors.</p>
+            </li>
+            <li>
+              <time datetime="2024">2024</time>
+              <p>Started an M.Sc. in Electrical Engineering at Tel Aviv University and joined the Geometric Deep Learning Lab.</p>
+            </li>
+            <li>
+              <time datetime="2024">2024</time>
+              <p>Completed a B.Sc. in Applied Mathematics at Tel Aviv University.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <section class="pubs-section" id="publications" aria-label="Selected publications">
+      <div class="section-head">
+        <h2>Selected Publications</h2>
+        <span class="rule"></span>
+        <a class="more" href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noopener">All on Google Scholar &rarr;</a>
       </div>
-    </header>
-
-    <div class="nav-rule"></div>
-    <nav class="nav" aria-label="Sections">
-      <ul>
-        <li><a href="#about" aria-current="true">About</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#cv">CV</a></li>
-      </ul>
-    </nav>
-
-    <main>
-      <section class="about" aria-label="About">
-        <p>
-          I am a Ph.D. student (direct track) in Electrical Engineering at Tel Aviv University, advised by
-          <a href="https://en-engineering.tau.ac.il/profile/darav" target="_blank" rel="noopener">Dan Raviv</a>
-          in the Geometric Deep Learning Lab.
-          My research studies the emergence of structural low rank and spectral bias in deep learning, and how they
-          shape generalization, forgetting, and optimization. I use these insights to develop principled methods for
-          applications spanning classification, language and vision models, implicit neural representations (INRs)
-          and graphics, forgetting and model merging, and post-training.
-        </p>
-        <p>
-          Alongside my Ph.D., I am an AI Research Scientist Intern in the Multimodal AI group at IBM Research, led by
-          <a href="https://elischwartz.github.io/" target="_blank" rel="noopener">Eli Schwartz</a>, where I work on post-training
-          for vision-language models (VLMs) and diffusion language models. Previously, I received a B.Sc. in Applied Mathematics and completed my M.Sc. thesis work in
-          Electrical Engineering (signal processing track), both at Tel Aviv University, and led the deep learning
-          group at <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a>.
-        </p>
-        <p class="note">
-          I am always happy to discuss research on low-rank structure and spectral bias in deep learning.
-          Feel free to reach out via <a href="mailto:idonithid@gmail.com">email</a>.
-        </p>
-      </section>
-
-      <div class="divider" aria-hidden="true"><span>&#10022; &#10022; &#10022;</span></div>
-
-      <section id="research">
-        <div class="section-head">
-          <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Recent Research</h2>
-        </div>
-        <p class="prose">
-          Recently, I have been studying how spectral bias and low-rank structure play out in practice, including how
-          the high-frequency artifacts that generative models leave behind, and that common detectors under-exploit,
-          can expose AI-generated audio [<a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">1</a>],
-          and why catastrophic forgetting concentrates in a low-rank subspace defined by the cross-task neural tangent
-          kernel [<a href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">2</a>].
-        </p>
-      </section>
-
-      <div class="divider" aria-hidden="true"><span>&#10022; &#10022; &#10022;</span></div>
-
-      <section id="news">
-        <div class="section-head">
-          <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>News</h2>
-        </div>
-        <ul class="news">
-          <li>
-            <time datetime="2026-10">Oct 2026</time>
-            <p>Joined IBM Research as an AI Research Scientist Intern in the Multimodal AI group, led by <a href="https://elischwartz.github.io/" target="_blank" rel="noopener">Eli Schwartz</a>.</p>
-          </li>
-          <li>
-            <time datetime="2026-05">May 2026</time>
-            <p><a href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</a> was accepted to the ICML 2026 Workshop on Continual Adaptation at Scale (CATS).</p>
-          </li>
-          <li>
-            <time datetime="2026-05">May 2026</time>
-            <p><a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection</a> was accepted to <a href="https://icml.cc/Conferences/2026" target="_blank" rel="noopener">ICML 2026</a>! Code, figures, and findings are on the <a href="https://idonithid.github.io/SONAR-Audio-DF-Detection/" target="_blank" rel="noopener">project page</a>.</p>
-          </li>
-          <li>
-            <time datetime="2026-04">Apr 2026</time>
-            <p>Transitioned to the Ph.D. direct track at Tel Aviv University, continuing in the Geometric Deep Learning Lab.</p>
-          </li>
-          <li>
-            <time datetime="2026">2026</time>
-            <p>Appointed Lead, Deep Learning at <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a>, heading research and productization of detectors for AI-generated audio and images.</p>
-          </li>
-          <li>
-            <time datetime="2025-11">Nov 2025</time>
-            <p>New <a href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">preprint</a> introduces SONAR, which detects AI-generated audio by isolating the high-frequency residuals that common detectors under-exploit.</p>
-          </li>
-          <li>
-            <time datetime="2025">2025</time>
-            <p>Joined <a href="https://dtectvision.ai" target="_blank" rel="noopener">Dtect Vision</a> to work on production deepfake detection, translating frequency-domain theory into deployable detectors.</p>
-          </li>
-          <li>
-            <time datetime="2024">2024</time>
-            <p>Started an M.Sc. in Electrical Engineering at Tel Aviv University and joined the Geometric Deep Learning Lab.</p>
-          </li>
-          <li>
-            <time datetime="2024">2024</time>
-            <p>Completed a B.Sc. in Applied Mathematics at Tel Aviv University.</p>
-          </li>
-        </ul>
-        <button class="more-btn" id="news-more" type="button" aria-expanded="false" hidden>
-          <span>Show more</span>
-          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-      </section>
-
-      <div class="divider" aria-hidden="true"><span>&#10022; &#10022; &#10022;</span></div>
-
-      <section id="publications">
-        <div class="section-head">
-          <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Publications</h2>
-        </div>
-        <p class="section-note">See also <a href="https://scholar.google.com/citations?user=CQ8pQSUAAAAJ" target="_blank" rel="noopener">Google Scholar</a></p>
-
-        <div class="pubs">
-          <article class="pub" id="pub-sonar">
-            <div class="thumb">
-              <img src="assets/papers/sonar.png" width="760" height="284" loading="lazy"
-                   alt="SONAR architecture: audio passes through a content feature extractor and a noise feature extractor, which are fused before a real/fake classifier" />
-            </div>
-            <div class="pub-body">
-              <h3>SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection</h3>
-              <p class="authors"><span class="me">Ido Nitzan Hidekel</span>, Gal Lifshitz, Khen Cohen, Dan Raviv</p>
-              <p class="venue"><i>International Conference on Machine Learning (ICML)</i>, 2026</p>
-              <div class="btns">
-                <a class="btn" href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noopener">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>PDF</a>
-                <a class="btn" href="https://github.com/idonithid/SONAR-Audio-DF-Detection" target="_blank" rel="noopener">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Code</a>
-                <a class="btn" href="https://idonithid.github.io/SONAR-Audio-DF-Detection/" target="_blank" rel="noopener">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>Project Page</a>
-                <button class="btn" type="button" data-toggle aria-expanded="false" aria-controls="tldr-sonar">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>TL;DR</button>
-                <button class="btn" type="button" data-toggle aria-expanded="false" aria-controls="bib-sonar">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>BibTeX</button>
-              </div>
-              <div class="panel" id="tldr-sonar" hidden>
-                <p>
-                  Neural networks preferentially learn low frequencies, which both leaves high-frequency
-                  artifacts in generated audio and leaves those artifacts under-exploited by common detectors.
-                  SONAR is a dual-path framework that learns data-driven SRM-style filters to isolate
-                  high-frequency residuals and uses a Jensen&ndash;Shannon contrastive objective to pull
-                  real content/noise pairs together and push fake pairs apart in latent space, yielding
-                  strong generalization to unseen generators.
-                </p>
-              </div>
-              <div class="panel" id="bib-sonar" hidden>
-<pre id="bib-sonar-text">@inproceedings{hidekel2026sonar,
-  title     = {SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection},
-  author    = {Hidekel, Ido Nitzan and Lifshitz, Gal and Cohen, Khen and Raviv, Dan},
-  booktitle = {Proceedings of the International Conference on Machine Learning (ICML)},
-  year      = {2026}
-}</pre>
-                <button class="btn" type="button" data-copy="bib-sonar-text">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button>
-              </div>
-            </div>
-          </article>
-
-          <article class="pub" id="pub-forgetting">
-            <div class="thumb">
-              <svg viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration: forgetting concentrates in a few NTK eigenmodes" font-family="'Times New Roman', Times, serif">
-                <rect width="240" height="150" fill="#fff"/>
-                <path d="M32 16V118H228" fill="none" stroke="#333" stroke-width="1"/>
-                <g fill="#b31b1b">
-                  <rect x="38" y="26" width="10" height="92"/>
-                  <rect x="51.5" y="50" width="10" height="68"/>
-                  <rect x="65" y="72" width="10" height="46"/>
-                  <rect x="78.5" y="89" width="10" height="29"/>
-                  <rect x="92" y="101" width="10" height="17"/>
-                </g>
-                <g fill="#c9c2b6">
-                  <rect x="105.5" y="109" width="10" height="9"/>
-                  <rect x="119" y="113" width="10" height="5"/>
-                  <rect x="132.5" y="114.5" width="10" height="3.5"/>
-                  <rect x="146" y="115.5" width="10" height="2.5"/>
-                  <rect x="159.5" y="116" width="10" height="2"/>
-                  <rect x="173" y="116.4" width="10" height="1.6"/>
-                  <rect x="186.5" y="116.7" width="10" height="1.3"/>
-                  <rect x="200" y="117" width="10" height="1"/>
-                  <rect x="213.5" y="117.2" width="10" height=".8"/>
-                </g>
-                <path d="M38 22v-3h64v3" fill="none" stroke="#b31b1b" stroke-width="1"/>
-                <text x="70" y="13" font-size="12" font-style="italic" text-anchor="middle" fill="#b31b1b">low-rank</text>
-                <text x="130" y="136" font-size="11" text-anchor="middle" fill="#333">NTK eigenmode</text>
-                <text transform="translate(20 67) rotate(-90)" font-size="11" text-anchor="middle" fill="#333">forgetting</text>
-              </svg>
-            </div>
-            <div class="pub-body">
-              <h3>Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</h3>
-              <p class="authors"><span class="me">Ido Nitzan Hidekel</span>, Dan Raviv</p>
-              <p class="venue"><i>ICML Workshop on Continual Adaptation at Scale: Towards Sustainable AI (CATS)</i>, 2026</p>
-              <div class="btns">
-                <a class="btn" href="https://arxiv.org/pdf/2606.18024" target="_blank" rel="noopener">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>PDF</a>
-                <button class="btn" type="button" data-toggle aria-expanded="false" aria-controls="tldr-forgetting">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6.1H3"/><path d="M21 12.1H3"/><path d="M15.1 18H3"/></svg>TL;DR</button>
-                <button class="btn" type="button" data-toggle aria-expanded="false" aria-controls="bib-forgetting">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>BibTeX</button>
-              </div>
-              <div class="panel" id="tldr-forgetting" hidden>
-                <p>
-                  A decade of mitigation strategies later, no theory explains <em>why</em> catastrophic
-                  forgetting happens. We give a function-space account in the Neural Tangent Kernel
-                  regime: new-task training induces interference along a structured, low-rank subspace
-                  of output space defined by the cross-task NTK. A closed-form predictor identifies the
-                  forgetting vector (direction and magnitude jointly) before new-task
-                  training begins, and the theory shows forgetting concentrates in just 1&ndash;6 NTK
-                  eigenmodes, explaining why parameter-space methods fail on shared-head benchmarks
-                  and motivating a targeted spectral regularizer.
-                </p>
-              </div>
-              <div class="panel" id="bib-forgetting" hidden>
-<pre id="bib-forgetting-text">@inproceedings{hidekel2026forgetting,
-  title     = {Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation},
-  author    = {Hidekel, Ido Nitzan and Raviv, Dan},
-  booktitle = {ICML 2026 Workshop on Continual Adaptation at Scale: Towards Sustainable AI (CATS)},
-  year      = {2026}
-}</pre>
-                <button class="btn" type="button" data-copy="bib-forgetting-text">
-                  <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span></button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <div class="divider" aria-hidden="true"><span>&#10022; &#10022; &#10022;</span></div>
-
-      <section id="cv">
-        <div class="section-head">
-          <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>CV</h2>
-          <a class="head-link" href="CV.pdf" target="_blank" rel="noopener">
-            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Full CV (PDF)</a>
-        </div>
-
-        <h3 class="subhead" id="experience">Experience</h3>
-        <div class="grid">
-          <div class="item">
-            <h4>AI Research Scientist Intern</h4>
-            <p>Multimodal AI group, IBM Research &middot; <span class="nw">2026&ndash;present</span></p>
+      <ol class="pubs">
+        <li class="pub">
+          <a class="title" href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection</a>
+          <div class="authors"><span class="me">Ido Nitzan Hidekel</span>, Gal Lifshitz, Khen Cohen, Dan Raviv</div>
+          <div class="meta">
+            <span class="venue">ICML 2026</span>
+            <a href="https://arxiv.org/pdf/2511.21325" target="_blank" rel="noopener">Paper</a>
+            <span class="sep">/</span>
+            <a href="https://github.com/idonithid/SONAR-Audio-DF-Detection" target="_blank" rel="noopener">Code</a>
+            <span class="sep">/</span>
+            <a href="https://idonithid.github.io/SONAR-Audio-DF-Detection/" target="_blank" rel="noopener">Project page</a>
           </div>
-          <div class="item">
-            <h4>Deep Learning Researcher</h4>
-            <p>Geometric Deep Learning Lab, Tel Aviv University &middot; <span class="nw">2024&ndash;present</span></p>
+        </li>
+        <li class="pub">
+          <a class="title" href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</a>
+          <div class="authors"><span class="me">Ido Nitzan Hidekel</span>, Dan Raviv</div>
+          <div class="meta">
+            <span class="venue">ICML 2026 Workshop (CATS)</span>
+            <a href="https://arxiv.org/pdf/2606.18024" target="_blank" rel="noopener">Paper</a>
           </div>
-          <div class="item">
-            <h4>Lead, Deep Learning</h4>
-            <p>Dtect Vision &middot; <span class="nw">2025&ndash;2026</span></p>
-          </div>
-        </div>
+        </li>
+      </ol>
+    </section>
 
-        <h3 class="subhead" id="education">Education</h3>
-        <div class="grid">
-          <div class="item">
-            <h4>Ph.D., Electrical Engineering (direct track)</h4>
-            <p>Tel Aviv University &middot; <span class="nw">2026&ndash;present</span></p>
-          </div>
-          <div class="item">
-            <h4>M.Sc., Electrical Engineering</h4>
-            <p>Signal processing track &middot; Tel Aviv University &middot; <span class="nw">2024&ndash;2026</span></p>
-          </div>
-          <div class="item">
-            <h4>B.Sc., Applied Mathematics</h4>
-            <p>Tel Aviv University &middot; <span class="nw">2020&ndash;2024</span></p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div>
-        <p>&copy; 2026 Ido Nitzan Hidekel</p>
-        <p class="small">Last updated: October 2026</p>
-      </div>
-      <a class="to-top" href="#about" aria-label="Back to top">
-        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
-      </a>
-    </footer>
+    <footer class="footer">&copy; 2026 Ido Nitzan Hidekel &middot; Last updated: November 2026</footer>
   </div>
-
-  <script>
-    (function(){
-      // News: show the most recent items; the rest sit behind "Show more".
-      var LIMIT = 5;
-      var items = Array.prototype.slice.call(document.querySelectorAll('#news .news li'));
-      var more = document.getElementById('news-more');
-      if (items.length > LIMIT) {
-        var extra = items.slice(LIMIT);
-        extra.forEach(function(li){ li.hidden = true; });
-        more.hidden = false;
-        more.addEventListener('click', function(){
-          var open = more.getAttribute('aria-expanded') === 'true';
-          extra.forEach(function(li){ li.hidden = open; });
-          more.setAttribute('aria-expanded', String(!open));
-          more.querySelector('span').textContent = open ? 'Show more' : 'Show less';
-        });
-      }
-
-      // Publication panels (TL;DR / BibTeX).
-      document.querySelectorAll('[data-toggle]').forEach(function(btn){
-        var panel = document.getElementById(btn.getAttribute('aria-controls'));
-        btn.addEventListener('click', function(){
-          var open = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', String(!open));
-          panel.hidden = open;
-        });
-      });
-
-      // Copy BibTeX to the clipboard.
-      document.querySelectorAll('[data-copy]').forEach(function(btn){
-        btn.addEventListener('click', function(){
-          var label = btn.querySelector('span');
-          navigator.clipboard.writeText(document.getElementById(btn.getAttribute('data-copy')).textContent)
-            .then(function(){ label.textContent = 'Copied!'; setTimeout(function(){ label.textContent = 'Copy'; }, 1500); });
-        });
-      });
-
-      // Highlight the nav item for the section currently in view.
-      var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
-      var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
-      var pending = false;
-      function update(){
-        pending = false;
-        var active = 0;
-        targets.forEach(function(t, i){ if (t.getBoundingClientRect().top <= window.innerHeight * 0.3) active = i; });
-        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) active = targets.length - 1;
-        links.forEach(function(a, i){
-          if (i === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-        });
-      }
-      window.addEventListener('scroll', function(){
-        if (!pending) { pending = true; requestAnimationFrame(update); }
-      }, { passive: true });
-      window.addEventListener('resize', update);
-      update();
-    })();
-  </script>
 </body>
 </html>
