@@ -111,12 +111,14 @@
     /* Publications: compact list, the title is the link */
     .pubs-section{margin-top:22px}
     .pubs{list-style:none; margin:0; padding:0; display:grid; gap:8px}
-    .pub{padding:9px 16px; background:var(--surface); border:1px solid var(--border); border-radius:10px}
+    .pub{padding:8px 16px; background:var(--surface); border:1px solid var(--border); border-radius:10px}
     .pub .title{font:500 17px/1.4 var(--serif); color:var(--text)}
     .pub a.title:hover{color:var(--accent); text-decoration:none}
     .pub .authors{margin:3px 0 0; color:var(--muted); font-size:14.5px}
     .pub .me{color:var(--text); font-weight:700}
-    .pub .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:7px; font-size:14px}
+    .pub .row{display:flex; flex-wrap:wrap; align-items:center; gap:4px 14px; margin-top:4px}
+    .pub .row .authors{margin:0}
+    .pub .meta{display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:14px}
     .venue{padding:2px 9px; border-radius:999px; background:var(--chip); border:1px solid var(--border); color:var(--muted); font-weight:500; font-size:13px}
     .meta .sep{color:var(--line)}
 
@@ -200,6 +202,10 @@
         <div class="news-box" tabindex="0">
           <ul class="news">
             <li>
+              <time datetime="2026-11">Nov 2026</time>
+              <p>New preprint: <a href="https://arxiv.org/abs/2611.25000" target="_blank" rel="noopener">Watch Where You Linearize: Predicting and Correcting Model-Merging Interference</a>, now under review at TMLR.</p>
+            </li>
+            <li>
               <time datetime="2026-10">Oct 2026</time>
               <p>Joined IBM Research as an AI Research Scientist Intern in the Multimodal AI group, led by <a href="https://elischwartz.github.io/" target="_blank" rel="noopener">Eli Schwartz</a>.</p>
             </li>
@@ -248,7 +254,18 @@
       </div>
       <ol class="pubs">
         <li class="pub">
+          <a class="title" href="https://arxiv.org/abs/2611.25000" target="_blank" rel="noopener">Watch Where You Linearize: Predicting and Correcting Model-Merging Interference</a>
+          <div class="row">
+          <div class="authors"><span class="me">Ido Nitzan Hidekel</span>, Dan Raviv</div>
+          <div class="meta">
+            <span class="venue">Under review, TMLR</span>
+            <a href="https://arxiv.org/pdf/2611.25000" target="_blank" rel="noopener">Paper</a>
+          </div>
+          </div>
+        </li>
+        <li class="pub">
           <a class="title" href="https://arxiv.org/abs/2511.21325" target="_blank" rel="noopener">SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection</a>
+          <div class="row">
           <div class="authors"><span class="me">Ido Nitzan Hidekel</span>, Gal Lifshitz, Khen Cohen, Dan Raviv</div>
           <div class="meta">
             <span class="venue">ICML 2026</span>
@@ -258,13 +275,16 @@
             <span class="sep">/</span>
             <a href="https://idonithid.github.io/SONAR-Audio-DF-Detection/" target="_blank" rel="noopener">Project page</a>
           </div>
+          </div>
         </li>
         <li class="pub">
           <a class="title" href="https://arxiv.org/abs/2606.18024" target="_blank" rel="noopener">Catastrophic Forgetting is Low-Rank: A Function-Space Theory for Continual Adaptation</a>
+          <div class="row">
           <div class="authors"><span class="me">Ido Nitzan Hidekel</span>, Dan Raviv</div>
           <div class="meta">
             <span class="venue">ICML 2026 Workshop (CATS)</span>
             <a href="https://arxiv.org/pdf/2606.18024" target="_blank" rel="noopener">Paper</a>
+          </div>
           </div>
         </li>
       </ol>

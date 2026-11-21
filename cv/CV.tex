@@ -37,12 +37,11 @@
 % Role or degree: title, organization, right-aligned details.
 \newcommand{\entry}[3]{\textbf{#1}{\color{muted}\ --- #2}\hfill{\color{muted}\small #3}\par}
 \newcommand{\sub}[1]{{\color{muted}\small\itshape #1}\par}
-% Publication: title, authors, venue, links, description.
+% Publication: title, authors, venue, links, description (description not shown).
 \newcommand{\pub}[5]{%
   \textbf{#1}\par\vspace{2pt}
   {\color{muted}\small #2}\par\vspace{1pt}
-  {\small{\color{accent}\itshape #3}\quad #4}\par\vspace{2pt}
-  {\footnotesize #5}\par}
+  {\small{\color{accent}\itshape #3}\quad #4}\par}
 
 \begin{document}
 
@@ -92,6 +91,14 @@ deployment}. First author of papers accepted to \textbf{ICML 2026} and the \text
 \end{itemize}
 
 \section{Selected Publications}
+\pub{Watch Where You Linearize: Predicting and Correcting Model-Merging Interference}
+    {Ido Nitzan Hidekel, Dan Raviv}
+    {Under review, TMLR.}
+    {\href{https://arxiv.org/abs/2611.25000}{\faFilePdf\ Paper}}
+    {Showed that a first-order directional derivative of one task's outputs along another task's vector predicts
+     model-merging interference per task and per example, when evaluated at the right model.}
+\vspace{6pt}
+
 \pub{SONAR: Spectral-Contrastive Audio Residuals for Generalizable Deepfake Detection}
     {Ido Nitzan Hidekel, Gal Lifshitz, Khen Cohen, Dan Raviv}
     {ICML 2026, regular track.}
