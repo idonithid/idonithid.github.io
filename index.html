@@ -62,7 +62,7 @@
     :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
     svg.i{width:1em; height:1em; flex:none; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
 
-    .wrap{max-width:1120px; margin:0 auto; padding:20px 28px 12px}
+    .wrap{max-width:1120px; margin:0 auto; padding:24px 28px 16px}
 
     /* Top block: about on the left, news on the right */
     .top{display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:44px; align-items:stretch}
@@ -122,6 +122,30 @@
     .venue{padding:2px 9px; border-radius:999px; background:var(--chip); border:1px solid var(--border); color:var(--muted); font-weight:500; font-size:13px}
     .meta .sep{color:var(--line)}
 
+    /* Top menu bar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      background:color-mix(in srgb, var(--bg) 88%, transparent);
+      -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+    }
+    .topnav{max-width:1120px; margin:0 auto; padding:0 28px; height:54px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .topnav .brand{font:600 16px var(--serif); color:var(--text); white-space:nowrap}
+    .topnav .brand:hover{text-decoration:none; color:var(--accent)}
+    .topnav ul{display:flex; gap:4px; list-style:none; margin:0; padding:0; overflow-x:auto; scrollbar-width:none}
+    .topnav ul::-webkit-scrollbar{display:none}
+    .topnav ul a{display:block; padding:6px 12px; border-radius:999px; font:500 14.5px var(--sans); color:var(--muted); white-space:nowrap}
+    .topnav ul a:hover{background:var(--chip); color:var(--text); text-decoration:none}
+    .topnav ul a[aria-current="true"]{background:var(--chip); color:var(--text); font-weight:600}
+    section[id]{scroll-margin-top:70px}
+    html{scroll-behavior:smooth}
+    @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+    @media (max-width:520px){
+      .topnav{padding:0 12px; height:50px}
+      .topnav .brand{display:none}
+      .topnav ul{margin:0 auto}
+      .topnav ul a{padding:6px 10px; font-size:14px}
+    }
     .footer{margin-top:12px; color:var(--subtle); font-size:12.5px; text-align:center}
 
     @media (max-width:860px){
@@ -141,9 +165,21 @@
 </head>
 
 <body>
+  <header class="topbar">
+    <nav class="topnav" aria-label="Sections">
+      <a class="brand" href="#about">Ido Nitzan Hidekel</a>
+      <ul>
+        <li><a href="#about" aria-current="true">About</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="CV.pdf" target="_blank" rel="noopener">CV</a></li>
+        <li><a href="bio.html">Bio</a></li>
+      </ul>
+    </nav>
+  </header>
   <div class="wrap">
     <div class="top">
-      <section class="about-col" aria-label="About">
+      <section class="about-col" id="about" aria-label="About">
         <header class="header">
           <img class="avatar" src="assets/avatar.jpg" width="440" height="440" alt="Ido Nitzan Hidekel" />
           <div>
@@ -292,5 +328,36 @@
 
     <footer class="footer">&copy; 2026 Ido Nitzan Hidekel &middot; Last updated: November 2026</footer>
   </div>
+  <script>
+    // Highlight the menu item for the section in view.
+    (function(){
+      var links = Array.prototype.slice.call(document.querySelectorAll('.topnav ul a[href^="#"]'));
+      var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+      var clicked = null, clickTimer = null;
+      function mark(active){
+        links.forEach(function(a, i){ if (i === active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+      }
+      function update(){
+        if (clicked !== null) return;
+        var active = 0, tops = targets.map(function(t){ return t.getBoundingClientRect().top; });
+        tops.forEach(function(top, i){
+          // On wide screens News sits beside About; treat side-by-side sections as one.
+          var sideBySide = i > 0 && Math.abs(top - tops[i - 1]) < 30;
+          if (top <= 140 && !sideBySide) active = i;
+        });
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) active = targets.length - 1;
+        mark(active);
+      }
+      links.forEach(function(a, i){
+        a.addEventListener('click', function(){
+          clicked = i; mark(i);
+          clearTimeout(clickTimer);
+          clickTimer = setTimeout(function(){ clicked = null; }, 900);
+        });
+      });
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
 </body>
 </html>
